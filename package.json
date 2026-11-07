@@ -1,0 +1,54 @@
+{
+  "name": "digito-premium-desktop",
+  "version": "3.4.0",
+  "description": "DIGITO PREMIUM - Windows desktop edition",
+  "author": "DIGITO",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist:win": "electron-builder --win nsis --x64"
+  },
+  "devDependencies": {
+    "electron": "^38.2.2",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "ir.digito.premium",
+    "productName": "DIGITO PREMIUM",
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "app/**/*",
+      "package.json",
+      "assets/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "DIGITO-PREMIUM-Setup-${version}-${arch}.${ext}",
+      "icon": "assets/digito-icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DIGITO PREMIUM",
+      "uninstallDisplayName": "DIGITO PREMIUM",
+      "installerIcon": "assets/digito-icon.ico",
+      "uninstallerIcon": "assets/digito-icon.ico"
+    }
+  }
+}
